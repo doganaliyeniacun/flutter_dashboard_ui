@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dashboard/core/constants/application_constants.dart';
-import 'package:flutter_dashboard/features/views/main/view/main.dart';
+import 'package:flutter_dashboard/features/views/main/view/main_view.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 

@@ -13,11 +13,11 @@ class Responsive extends StatelessWidget {
     required this.desktop,
   }) : super(key: key);
 
-  bool get isMobile => Get.size.width < 850;
+  static bool get isMobile => Get.size.width < 850;
 
-  bool get isTablet => Get.size.width < 1100 && Get.size.width >= 850;
+  static bool get isTablet => Get.size.width < 1100 && Get.size.width >= 850;
 
-  bool get isDesktop => Get.size.width >= 1100;
+  static bool get isDesktop => Get.size.width >= 1100;
 
   @override
   Widget build(BuildContext context) {

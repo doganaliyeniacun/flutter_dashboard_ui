@@ -1,31 +1,25 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_dashboard/core/constants/application_constants.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_svg/svg.dart';
 
-class DashboardScreen extends StatelessWidget {
-  const DashboardScreen({Key? key}) : super(key: key);
+import '../../../../core/constants/application_constants.dart';
+
+class Header extends StatelessWidget {
+  const Header({
+    Key? key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: SingleChildScrollView(
-        padding: const EdgeInsets.all(defaultPadding),
-        child: Column(
-          children: [
-            Row(
-              children: [
-                Text(
-                  "Dashboard",
-                  style: Theme.of(context).textTheme.headline6,
-                ),
-                const Spacer(),
-                const Expanded(child: SearchField()),
-                const ProfileCard()
-              ],
-            )
-          ],
+    return Row(
+      children: [
+        Text(
+          "Dashboard",
+          style: Theme.of(context).textTheme.headline6,
         ),
-      ),
+        const Spacer(flex: 2,),
+        const Expanded(child: SearchField()),
+        const ProfileCard()
+      ],
     );
   }
 }
@@ -56,7 +50,7 @@ class ProfileCard extends StatelessWidget {
           ),
           const Padding(
             padding: EdgeInsets.symmetric(horizontal: defaultPadding / 2),
-            child: Text("Angelina Jolie"),
+            child: Text("Mary Jane"),
           ),
           const Icon(Icons.keyboard_arrow_down)
         ],
@@ -74,6 +68,7 @@ class SearchField extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextField(
       decoration: InputDecoration(
+        hintText: "Search",
         fillColor: secondaryColor,
         filled: true,
         border: const OutlineInputBorder(
@@ -89,6 +84,7 @@ class SearchField extends StatelessWidget {
             margin: const EdgeInsets.symmetric(horizontal: defaultPadding / 2),
             decoration: const BoxDecoration(
               color: primaryColor,
+              borderRadius: BorderRadius.all(Radius.circular(10)),
             ),
             child: SvgPicture.asset("assets/icons/Search.svg"),
           ),
