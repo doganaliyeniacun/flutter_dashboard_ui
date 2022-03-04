@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../../../../core/constants/application_constants.dart';
-import '../models/recent_files.dart';
+import '../../views/dashboard/models/recent_files.dart';
+
 
 class RecentFiles extends StatelessWidget {
   @override

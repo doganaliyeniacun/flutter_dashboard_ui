@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../../../../core/constants/application_constants.dart';
-import '../models/fiels_model.dart';
+import '../../views/dashboard/models/fiels_model.dart';
+
 
 class FileInfoCard extends StatelessWidget {
   const FileInfoCard({

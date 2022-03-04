@@ -3,7 +3,8 @@ import 'package:flutter_dashboard/core/responsive/responsive.dart';
 import 'package:get/get.dart';
 
 import '../../../../core/constants/application_constants.dart';
-import '../models/fiels_model.dart';
+
+import '../../views/dashboard/models/fiels_model.dart';
 import 'file_info_card.dart';
 
 class MyFiels extends StatelessWidget {

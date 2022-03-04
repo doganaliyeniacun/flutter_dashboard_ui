@@ -3,10 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_dashboard/core/constants/application_constants.dart';
 import 'package:flutter_dashboard/core/responsive/responsive.dart';
 
-import '../compenents/dashboard_header.dart';
-import '../compenents/my_fiels.dart';
-import '../compenents/recent_files.dart';
-import '../compenents/storage_details.dart';
+import '../../../components/dashboard_compenents/dashboard_header.dart';
+import '../../../components/dashboard_compenents/my_fiels.dart';
+import '../../../components/dashboard_compenents/recent_files.dart';
+import '../../../components/dashboard_compenents/storage_details.dart';
+
 
 class DashboardScreen extends StatelessWidget {
   const DashboardScreen({Key? key}) : super(key: key);
