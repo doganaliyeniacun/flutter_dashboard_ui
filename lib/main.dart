@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
         ),
         canvasColor: secondaryColor,
       ),
-      home: const MainScreen(),
+      home: MainScreen(),
     );
   }
 }

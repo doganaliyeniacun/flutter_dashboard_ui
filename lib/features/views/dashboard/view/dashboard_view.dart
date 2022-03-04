@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_dashboard/core/constants/application_constants.dart';
-import 'package:flutter_dashboard/features/views/dashboard/models/recent_files.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_dashboard/core/responsive/responsive.dart';
 
 import '../compenents/dashboard_header.dart';
 import '../compenents/my_fiels.dart';
@@ -19,7 +18,7 @@ class DashboardScreen extends StatelessWidget {
         padding: const EdgeInsets.all(defaultPadding),
         child: Column(
           children: [
-            const Header(),
+             Header(),
             const SizedBox(height: defaultPadding),
             Row(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -31,14 +30,19 @@ class DashboardScreen extends StatelessWidget {
                       const MyFiels(),
                       const SizedBox(height: defaultPadding),
                       RecentFiles(),
+                      if (Responsive.isMobile(context))
+                        const SizedBox(height: defaultPadding),
+                      if (Responsive.isMobile(context)) const StorageDetails(),
                     ],
                   ),
                 ),
-                const SizedBox(width: defaultPadding),
-                const Expanded(
-                  flex: 2,
-                  child: StorageDetails(),
-                ),
+                if (!Responsive.isMobile(context))
+                  const SizedBox(width: defaultPadding),
+                if (!Responsive.isMobile(context))
+                  const Expanded(
+                    flex: 2,
+                    child: StorageDetails(),
+                  ),
               ],
             ),
           ],
@@ -47,4 +51,3 @@ class DashboardScreen extends StatelessWidget {
     );
   }
 }
-

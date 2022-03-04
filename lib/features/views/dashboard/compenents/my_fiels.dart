@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_dashboard/core/responsive/responsive.dart';
+import 'package:get/get.dart';
 
 import '../../../../core/constants/application_constants.dart';
 import '../models/fiels_model.dart';
@@ -22,9 +24,10 @@ class MyFiels extends StatelessWidget {
             ),
             ElevatedButton.icon(
               style: TextButton.styleFrom(
-                padding: const EdgeInsets.symmetric(
+                padding: EdgeInsets.symmetric(
                   horizontal: defaultPadding * 1.5,
-                  vertical: defaultPadding,
+                  vertical:
+                      defaultPadding / (Responsive.isMobile(context) ? 2 : 1),
                 ),
               ),
               onPressed: () {},
@@ -34,18 +37,43 @@ class MyFiels extends StatelessWidget {
           ],
         ),
         const SizedBox(height: defaultPadding),
-        GridView.builder(
-          shrinkWrap: true,
-          itemCount: demoMyFiels.length,
-          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 4,
-            crossAxisSpacing: defaultPadding,
-            childAspectRatio: 1.4,
+        Responsive(
+          mobile: FileInfoCardGridView(
+            crossAxisCount: Get.size.width < 650 ? 2 : 4,
+            childAspectRatio: Get.size.width < 650 ? 1.3 : 1,
           ),
-          itemBuilder: (context, index) =>
-              FileInfoCard(info: demoMyFiels[index]),
-        ),
+          tablet: const FileInfoCardGridView(),
+          desktop: FileInfoCardGridView(
+              childAspectRatio: Get.size.width < 1400 ? 1.1 : 1.4),
+        )
       ],
+    );
+  }
+}
+
+class FileInfoCardGridView extends StatelessWidget {
+  const FileInfoCardGridView({
+    Key? key,
+    this.crossAxisCount = 4,
+    this.childAspectRatio = 1,
+  }) : super(key: key);
+
+  final int crossAxisCount;
+  final double childAspectRatio;
+
+  @override
+  Widget build(BuildContext context) {
+    return GridView.builder(
+      physics: const NeverScrollableScrollPhysics(),
+      shrinkWrap: true,
+      itemCount: demoMyFiels.length,
+      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: crossAxisCount,
+        crossAxisSpacing: defaultPadding,
+        childAspectRatio: childAspectRatio,
+        mainAxisSpacing: defaultPadding,
+      ),
+      itemBuilder: (context, index) => FileInfoCard(info: demoMyFiels[index]),
     );
   }
 }
